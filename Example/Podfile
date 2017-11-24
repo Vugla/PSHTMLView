@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PSHTMLView_Example' do
+  pod 'PSHTMLView', :path => '../'
+
+  target 'PSHTMLView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
