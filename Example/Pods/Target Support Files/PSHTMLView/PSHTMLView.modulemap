@@ -1,0 +1,6 @@
+framework module PSHTMLView {
+  umbrella header "PSHTMLView-umbrella.h"
+
+  export *
+  module * { export * }
+}

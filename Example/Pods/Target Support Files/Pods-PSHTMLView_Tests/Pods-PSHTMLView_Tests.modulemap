@@ -1,0 +1,6 @@
+framework module Pods_PSHTMLView_Tests {
+  umbrella header "Pods-PSHTMLView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

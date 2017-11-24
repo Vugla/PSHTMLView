@@ -1,0 +1,22 @@
+{
+  "name": "PSHTMLView",
+  "version": "0.1.0",
+  "summary": "A short description of PSHTMLView.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Vugla/PSHTMLView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Vugla": "predragsamardzic@msn.com"
+  },
+  "source": {
+    "git": "https://github.com/Vugla/PSHTMLView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "PSHTMLView/Classes/**/*"
+}
