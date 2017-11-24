@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/PSHTMLView.svg?style=flat)](http://cocoapods.org/pods/PSHTMLView)
 [![Platform](https://img.shields.io/cocoapods/p/PSHTMLView.svg?style=flat)](http://cocoapods.org/pods/PSHTMLView)
 
-![Alt text](Screenshots/screenshot.png?raw=true)
+![Alt text](Screenshots/screenshot1.png?raw=true)
 
 ## Example
 
