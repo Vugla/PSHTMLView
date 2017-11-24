@@ -26,7 +26,6 @@ PSHTMLView is a non scrollable WKWebView wrapper, adapt for using in UITableView
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Vugla' => 'predragsamardzic@msn.com' }
   s.source           = { :git => 'https://github.com/Vugla/PSHTMLView.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
 
@@ -38,5 +37,4 @@ PSHTMLView is a non scrollable WKWebView wrapper, adapt for using in UITableView
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

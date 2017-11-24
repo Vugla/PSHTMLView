@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3EB6092D1449883B50CFA505239FAD4F /* PSHTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3E8A2BCC8ECFA09738323BE6F4390F /* PSHTMLView.swift */; };
-		6CB1614F0081384174E26B1DEA1630BD /* Pods-PSHTMLView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4B84317A718E5B72670BFD3E53EA /* Pods-PSHTMLView_Tests-dummy.m */; };
 		6E4673AD326C19367F62B52C0DFF5DB6 /* Pods-PSHTMLView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37061F9E67021C64ABCD9DDC727AAAB8 /* Pods-PSHTMLView_Example-dummy.m */; };
 		7C4EA4BB3385B08E3ABB8CADD37E6D04 /* Pods-PSHTMLView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 626159D9EAC1F9B7BAB6A9CEC2A1653F /* Pods-PSHTMLView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D151A3072B268BF9A61FEC0BB3BF724 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -16,7 +15,6 @@
 		A866371F4BCF8D5D201DF7434D370E76 /* PSHTMLView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0321CD86EE29E449B7CFF608B7D6DE89 /* PSHTMLView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9F94D6D2248CC3548844E089BB3C90C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		BD345C25A7A738092700431C6047EC50 /* PSHTMLView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FF54DB326B4F93C6A35DCC0636705A /* PSHTMLView-dummy.m */; };
-		F84BF3B57E3D85B73ED06A5A7C720EE4 /* Pods-PSHTMLView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E757A79E2CFEB71B04CE325958E2FE4 /* Pods-PSHTMLView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,37 +29,27 @@
 
 /* Begin PBXFileReference section */
 		0321CD86EE29E449B7CFF608B7D6DE89 /* PSHTMLView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PSHTMLView-umbrella.h"; sourceTree = "<group>"; };
-		03AB4B84317A718E5B72670BFD3E53EA /* Pods-PSHTMLView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PSHTMLView_Tests-dummy.m"; sourceTree = "<group>"; };
 		0D876AA7D5BB0741AF0648CBAF00EBED /* Pods-PSHTMLView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PSHTMLView_Example.modulemap"; sourceTree = "<group>"; };
 		17B48A4B4C5021824B60FEF6161E15B5 /* Pods-PSHTMLView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PSHTMLView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		17E2A2A69E9F4584E10E9B922C2D2ED5 /* Pods-PSHTMLView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PSHTMLView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		29E8B3C2BD96C2ACFA07B49D8F209254 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1F8274ABBF26F7D4A99EAC09C6C0A2 /* Pods-PSHTMLView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PSHTMLView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		37061F9E67021C64ABCD9DDC727AAAB8 /* Pods-PSHTMLView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PSHTMLView_Example-dummy.m"; sourceTree = "<group>"; };
-		3ADF5E097C2014CBCAF3C414FED4AEF8 /* Pods-PSHTMLView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PSHTMLView_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		4A6681C0A55C46ADF2008F0F472611F4 /* Pods_PSHTMLView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSHTMLView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7769FF0A6EF52245152AF349DF749D /* PSHTMLView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PSHTMLView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDAC3198F61CE335A649927990A6DA5 /* PSHTMLView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PSHTMLView.xcconfig; sourceTree = "<group>"; };
 		4E05C9F7196538FCDB907AB36F2AB43F /* Pods-PSHTMLView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PSHTMLView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		5909549D6EBEB8C692DD57EE7F0FA128 /* Pods-PSHTMLView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PSHTMLView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A9E7017AC1B775FFD257AF208B81927 /* Pods_PSHTMLView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSHTMLView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6044755F4DA3D82D365EC2EDA3F59CAB /* Pods-PSHTMLView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PSHTMLView_Example-resources.sh"; sourceTree = "<group>"; };
 		626159D9EAC1F9B7BAB6A9CEC2A1653F /* Pods-PSHTMLView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PSHTMLView_Example-umbrella.h"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6C5907C6E96C4EBC44E1B391361B6976 /* Pods-PSHTMLView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PSHTMLView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7627A310240A3EF0D8151E4F3AC3BBC7 /* PSHTMLView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PSHTMLView-prefix.pch"; sourceTree = "<group>"; };
 		78FF54DB326B4F93C6A35DCC0636705A /* PSHTMLView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PSHTMLView-dummy.m"; sourceTree = "<group>"; };
 		79BF8894BA5399B35357F8C1285E246F /* PSHTMLView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PSHTMLView.modulemap; sourceTree = "<group>"; };
 		838D8D71165D94D034EE56152F252A6C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B763759C2812A5597E2E4E76867B06F /* Pods-PSHTMLView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PSHTMLView_Tests.modulemap"; sourceTree = "<group>"; };
-		8E757A79E2CFEB71B04CE325958E2FE4 /* Pods-PSHTMLView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PSHTMLView_Tests-umbrella.h"; sourceTree = "<group>"; };
-		902B839EB2F3B0A4255CC580B1EC48C5 /* Pods-PSHTMLView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PSHTMLView_Tests-resources.sh"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		945D25D3E39B4664ACF45DFDF0D76938 /* Pods-PSHTMLView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PSHTMLView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A01CD209B55380CD03A4E436E64AA119 /* Pods-PSHTMLView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PSHTMLView_Example-frameworks.sh"; sourceTree = "<group>"; };
-		B816B0324C09477E679D6271C9472518 /* Pods-PSHTMLView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PSHTMLView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		DC3E8A2BCC8ECFA09738323BE6F4390F /* PSHTMLView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PSHTMLView.swift; path = PSHTMLView/Classes/PSHTMLView.swift; sourceTree = "<group>"; };
-		FAFFC649F49C145DC02D51FD3A3CD0E0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,29 +94,10 @@
 			path = "Example/Pods/Target Support Files/PSHTMLView";
 			sourceTree = "<group>";
 		};
-		3EBCF4CC519B8371D0DF98BA599D4187 /* Pods-PSHTMLView_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				FAFFC649F49C145DC02D51FD3A3CD0E0 /* Info.plist */,
-				8B763759C2812A5597E2E4E76867B06F /* Pods-PSHTMLView_Tests.modulemap */,
-				945D25D3E39B4664ACF45DFDF0D76938 /* Pods-PSHTMLView_Tests-acknowledgements.markdown */,
-				B816B0324C09477E679D6271C9472518 /* Pods-PSHTMLView_Tests-acknowledgements.plist */,
-				03AB4B84317A718E5B72670BFD3E53EA /* Pods-PSHTMLView_Tests-dummy.m */,
-				3ADF5E097C2014CBCAF3C414FED4AEF8 /* Pods-PSHTMLView_Tests-frameworks.sh */,
-				902B839EB2F3B0A4255CC580B1EC48C5 /* Pods-PSHTMLView_Tests-resources.sh */,
-				8E757A79E2CFEB71B04CE325958E2FE4 /* Pods-PSHTMLView_Tests-umbrella.h */,
-				5909549D6EBEB8C692DD57EE7F0FA128 /* Pods-PSHTMLView_Tests.debug.xcconfig */,
-				6C5907C6E96C4EBC44E1B391361B6976 /* Pods-PSHTMLView_Tests.release.xcconfig */,
-			);
-			name = "Pods-PSHTMLView_Tests";
-			path = "Target Support Files/Pods-PSHTMLView_Tests";
-			sourceTree = "<group>";
-		};
 		45D49C0C29118ECF29A8DE6DA1AFF377 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				50D5A4FE24F8D82A41FF9F9B653CDF06 /* Pods-PSHTMLView_Example */,
-				3EBCF4CC519B8371D0DF98BA599D4187 /* Pods-PSHTMLView_Tests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -213,7 +182,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F84BF3B57E3D85B73ED06A5A7C720EE4 /* Pods-PSHTMLView_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +298,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CB1614F0081384174E26B1DEA1630BD /* Pods-PSHTMLView_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,7 +502,6 @@
 		};
 		8199309E3B5050FBC6EC56D3E3114743 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5909549D6EBEB8C692DD57EE7F0FA128 /* Pods-PSHTMLView_Tests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -567,7 +533,6 @@
 		};
 		822057C3E6AEBA88503EB4E594054890 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C5907C6E96C4EBC44E1B391361B6976 /* Pods-PSHTMLView_Tests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

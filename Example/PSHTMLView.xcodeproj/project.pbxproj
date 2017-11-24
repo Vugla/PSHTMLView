@@ -16,20 +16,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0EB11385C267E3B4808F0B62 /* Pods-PSHTMLView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSHTMLView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PSHTMLView_Tests/Pods-PSHTMLView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2AD99146AC26D8F7282A45A6 /* Pods_PSHTMLView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSHTMLView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E90642270D1CA0C319D4860 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		55904147A8C70FA2817034D1 /* Pods-PSHTMLView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSHTMLView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PSHTMLView_Tests/Pods-PSHTMLView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* PSHTMLView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSHTMLView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		86E74CED34EC913D52EC86BC /* Pods-PSHTMLView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSHTMLView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PSHTMLView_Example/Pods-PSHTMLView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		8E73DDB1C19F97EDC84A055E /* Pods_PSHTMLView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSHTMLView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95AD481137BA434681F07397 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A5F714711FC7B3610035EE24 /* PSHTMLInTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSHTMLInTableViewController.swift; sourceTree = "<group>"; };
 		DA1644A1FEFF1F249EBB3B41 /* PSHTMLView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PSHTMLView.podspec; path = ../PSHTMLView.podspec; sourceTree = "<group>"; };
@@ -53,7 +48,6 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for PSHTMLView */,
-				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				FF3BF395FE65A614659D4327 /* Pods */,
 				E21DAEE118C5CDEFF4224551 /* Frameworks */,
@@ -90,23 +84,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				2AD99146AC26D8F7282A45A6 /* Pods_PSHTMLView_Example.framework */,
-				8E73DDB1C19F97EDC84A055E /* Pods_PSHTMLView_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,8 +107,6 @@
 			children = (
 				86E74CED34EC913D52EC86BC /* Pods-PSHTMLView_Example.debug.xcconfig */,
 				F22299E5DA2D277A2633DFC4 /* Pods-PSHTMLView_Example.release.xcconfig */,
-				0EB11385C267E3B4808F0B62 /* Pods-PSHTMLView_Tests.debug.xcconfig */,
-				55904147A8C70FA2817034D1 /* Pods-PSHTMLView_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
