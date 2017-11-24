@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'PSHTMLView'
   s.version          = '0.1.0'
-  s.summary          = 'PSHTMLView is a non scrollable WKWebView wrapper, adapt for using in UITableView and UIScrollView'
+  s.summary          = 'WKWebView wrapper for using in UITableView and UIScrollView'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+PSHTMLView is a non scrollable WKWebView wrapper, adapt for using in UITableView and UIScrollView.
                        DESC
 
   s.homepage         = 'https://github.com/Vugla/PSHTMLView'
