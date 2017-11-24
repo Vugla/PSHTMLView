@@ -103,6 +103,7 @@ public class PSHTMLView: UIView {
         controller.addUserScript(PSHTMLViewScripts.viewportScript)
         controller.addUserScript(PSHTMLViewScripts.disableSelectionScript)
         controller.addUserScript(PSHTMLViewScripts.disableCalloutScript)
+        controller.addUserScript(PSHTMLViewScripts.addToOnloadScript)
         
         //add contentHeight script and handler
         controller.add(self, name: PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue)
@@ -219,7 +220,8 @@ struct PSHTMLViewScripts {
     private static let viewportScriptString = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); meta.setAttribute('initial-scale', '1.0'); meta.setAttribute('maximum-scale', '1.0'); meta.setAttribute('minimum-scale', '1.0'); meta.setAttribute('user-scalable', 'no'); document.getElementsByTagName('head')[0].appendChild(meta);"
     private static let disableSelectionScriptString = "document.documentElement.style.webkitUserSelect='none';"
     private static let disableCalloutScriptString = "document.documentElement.style.webkitTouchCallout='none';"
-    private static let heigthOnLoadScriptString = "window.onload= function () {window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue).postMessage({justLoaded:true,height: document.body.offsetHeight});};"
+    private static let addToOnloadScriptString = "function addLoadEvent(func) { var oldonload = window.onload; if (typeof window.onload != 'function') { window.onload = func; } else { window.onload = function() { if (oldonload) { oldonload(); } func(); } } } addLoadEvent(nameOfSomeFunctionToRunOnPageLoad); addLoadEvent(function() { }); "
+    private static let heigthOnLoadScriptString = "addLoadEvent( function () {window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue).postMessage({justLoaded:true,height: document.body.offsetHeight});};)"
     private static let heigthOnResizeScriptString = "document.body.addEventListener( 'resize', incrementCounter); function incrementCounter() {window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue).postMessage({height: document.body.offsetHeight});};"
     
     static let getContentHeightScriptString = "document.body.offsetHeight"
@@ -229,6 +231,7 @@ struct PSHTMLViewScripts {
     static let viewportScript = WKUserScript(source: viewportScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     static let disableSelectionScript = WKUserScript(source: disableSelectionScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     static let disableCalloutScript = WKUserScript(source: disableCalloutScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+    static let addToOnloadScript = WKUserScript(source: addToOnloadScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     static let heigthOnLoadScript = WKUserScript(source: heigthOnLoadScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     static let heigthOnResizeScript = WKUserScript(source: heigthOnResizeScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     
