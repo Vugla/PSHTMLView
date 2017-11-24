@@ -1,6 +1,5 @@
 # PSHTMLView
 
-[![CI Status](http://img.shields.io/travis/Vugla/PSHTMLView.svg?style=flat)](https://travis-ci.org/Vugla/PSHTMLView)
 [![Version](https://img.shields.io/cocoapods/v/PSHTMLView.svg?style=flat)](http://cocoapods.org/pods/PSHTMLView)
 [![License](https://img.shields.io/cocoapods/l/PSHTMLView.svg?style=flat)](http://cocoapods.org/pods/PSHTMLView)
 [![Platform](https://img.shields.io/cocoapods/p/PSHTMLView.svg?style=flat)](http://cocoapods.org/pods/PSHTMLView)
