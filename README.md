@@ -5,11 +5,15 @@
 [![License](https://img.shields.io/cocoapods/l/PSHTMLView.svg?style=flat)](http://cocoapods.org/pods/PSHTMLView)
 [![Platform](https://img.shields.io/cocoapods/p/PSHTMLView.svg?style=flat)](http://cocoapods.org/pods/PSHTMLView)
 
+![Alt text](Screenshots/screenshot.png?raw=true)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
+iOS 9+
 
 ## Installation
 
