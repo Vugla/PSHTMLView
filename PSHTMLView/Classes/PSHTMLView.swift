@@ -19,7 +19,7 @@ public protocol PSHTMLViewDelegate: class {
 public class PSHTMLView: UIView {
 
     
-    private var webViewHeightConstraint: NSLayoutConstraint!
+    var webViewHeightConstraint: NSLayoutConstraint!
     
     public var baseUrl:URL? = nil {
         didSet {
