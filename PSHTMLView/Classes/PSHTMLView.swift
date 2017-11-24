@@ -14,11 +14,13 @@ public protocol PSHTMLViewDelegate: class {
     func heightChanged(height: CGFloat)
     func shouldNavigate(for navigationAction: WKNavigationAction) -> Bool
     func handleScriptMessage(_ message: WKScriptMessage)
+    func loadingProgress(progress: Float)
+    func didFinishLoad()
 }
 
 public class PSHTMLView: UIView {
-
     
+    let webViewKeyPathsToObserve = ["estimatedProgress"]
     var webViewHeightConstraint: NSLayoutConstraint!
     
     public var baseUrl:URL? = nil {
@@ -52,7 +54,7 @@ public class PSHTMLView: UIView {
             webView.loadHTMLString(html ?? "", baseURL: baseUrl)
         }
     }
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -73,6 +75,28 @@ public class PSHTMLView: UIView {
         
         webView = WKWebView(frame: CGRect.zero, configuration: config)
         
+        for keyPath in webViewKeyPathsToObserve {
+            webView.addObserver(self, forKeyPath: keyPath, options: .new, context: nil)
+        }
+    }
+    
+    deinit {
+        for keyPath in webViewKeyPathsToObserve {
+            webView.removeObserver(self, forKeyPath: keyPath)
+        }
+    }
+    
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let keyPath = keyPath else { return }
+        
+        switch keyPath {
+            
+        case "estimatedProgress":
+            delegate?.loadingProgress(progress: Float(webView.estimatedProgress))
+            
+        default:
+            break
+        }
     }
     
     private func addDefaultScripts(controller: WKUserContentController) {
@@ -86,14 +110,19 @@ public class PSHTMLView: UIView {
         controller.addUserScript(PSHTMLViewScripts.heigthOnResizeScript)
     }
     
-    public func addScript(_ scriptString: String, observeMessageWithName: PSHTMLViewScriptMessage.HandlerName) {
+    public func addScript(_ scriptString: String, observeMessageWithName: PSHTMLViewScriptMessage.HandlerName? = nil) {
         webView.configuration.userContentController.addUserScript(WKUserScript(source: scriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true))
-        webView.configuration.userContentController.add(self, name: observeMessageWithName.rawValue)
+        if let observeMessageWithName = observeMessageWithName {  webView.configuration.userContentController.add(self, name: observeMessageWithName.rawValue)
+        }
     }
-
+    
 }
 
 extension PSHTMLView: WKNavigationDelegate {
+    
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        delegate?.didFinishLoad()
+    }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let delegate = delegate {
@@ -125,7 +154,7 @@ extension PSHTMLView: WKUIDelegate {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
-        completionHandler()
+            completionHandler()
         }
         
         alertController.addAction(okAction)
@@ -143,7 +172,7 @@ extension PSHTMLView: WKUIDelegate {
         }
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
-        completionHandler(false)
+            completionHandler(false)
         }
         
         alertController.addAction(okAction)
@@ -158,7 +187,7 @@ extension PSHTMLView: WKUIDelegate {
         let alertController = UIAlertController(title: nil, message: prompt, preferredStyle: .alert)
         
         alertController.addTextField { (textField) in
-                textField.text = defaultText
+            textField.text = defaultText
         }
         
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { action in
@@ -167,7 +196,7 @@ extension PSHTMLView: WKUIDelegate {
         }
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
-        completionHandler(nil)
+            completionHandler(nil)
         }
         
         alertController.addAction(okAction)
@@ -192,7 +221,7 @@ struct PSHTMLViewScripts {
     private static let disableCalloutScriptString = "document.documentElement.style.webkitTouchCallout='none';"
     private static let heigthOnLoadScriptString = "window.onload= function () {window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue).postMessage({justLoaded:true,height: document.body.offsetHeight});};"
     private static let heigthOnResizeScriptString = "document.body.addEventListener( 'resize', incrementCounter); function incrementCounter() {window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue).postMessage({height: document.body.offsetHeight});};"
-
+    
     static let getContentHeightScriptString = "document.body.offsetHeight"
     
     
@@ -202,7 +231,7 @@ struct PSHTMLViewScripts {
     static let disableCalloutScript = WKUserScript(source: disableCalloutScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     static let heigthOnLoadScript = WKUserScript(source: heigthOnLoadScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     static let heigthOnResizeScript = WKUserScript(source: heigthOnResizeScriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-
+    
 }
 
 public struct PSHTMLViewScriptMessage {

@@ -18,6 +18,7 @@ class PSHTMLCell: UITableViewCell {
 
 class PSHTMLInTableViewController: UIViewController {
     
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var tableView: UITableView!
     
     lazy private var htmlCell: PSHTMLCell = { [weak self] in
@@ -47,7 +48,7 @@ class PSHTMLInTableViewController: UIViewController {
         <TITLE>Your Title Here</TITLE>
         </HEAD>
         <BODY BGCOLOR="FFFFFF">
-        <CENTER><IMG ID="myImage" SRC="https://avatars0.githubusercontent.com/u/11614569?s=400&u=e4216c11691fe266c2848edc3b77cc19af22944b&v=4" ALIGN="BOTTOM" STYLE= max-width: 100%;"> </CENTER>
+        <DIV><CENTER><IMG ID="myImage" SRC="https://static.pexels.com/photos/675764/pexels-photo-675764.jpeg" ALIGN="BOTTOM" STYLE= "max-width: 100%;"> </CENTER></DIV>
         <HR>
         <a href="https://github.com/Vugla">Link Name</a>
             is a link to another nifty site
@@ -62,13 +63,14 @@ class PSHTMLInTableViewController: UIViewController {
         </BODY>
         </HTML>
 """
+        progressView.isHidden = false
+        progressView.setProgress(0, animated: false)
         htmlCell.htmlView.html = html
         
         //adding custom script - action when image clicked
         //adding observer and handling callback in delegate method handleScriptMessage
         let script = "var imgElement = document.getElementById(\"myImage\"); imgElement.onclick = function(e) { window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onImageClicked.rawValue).postMessage(e.currentTarget.getAttribute(\"src\")); };"
         htmlCell.htmlView.addScript(script, observeMessageWithName: .onImageClicked)
-        
     }
     
 }
@@ -140,6 +142,15 @@ extension PSHTMLInTableViewController: PSHTMLViewDelegate {
                 present(svc, animated: true, completion: nil)
             }
         }
+    }
+    
+    func loadingProgress(progress: Float) {
+        progressView.isHidden = progress == 1
+        progressView.setProgress(progress, animated: true)
+    }
+    
+    func didFinishLoad() {
+        progressView.setProgress(0, animated: false)
     }
     
 }

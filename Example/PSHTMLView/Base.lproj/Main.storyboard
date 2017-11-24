@@ -75,6 +75,13 @@
                                     <outlet property="delegate" destination="eCC-53-gmP" id="jjp-6y-UIv"/>
                                 </connections>
                             </tableView>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VoG-Zj-Yt2">
+                                <rect key="frame" x="112" y="364.5" width="150" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="L2Z-Cf-aBA"/>
+                                    <constraint firstAttribute="height" constant="2" id="MsN-FZ-JIa"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -82,11 +89,14 @@
                             <constraint firstItem="t1C-i2-mIY" firstAttribute="leading" secondItem="uXP-ph-jnF" secondAttribute="leading" id="YtF-fQ-3UO"/>
                             <constraint firstItem="t1C-i2-mIY" firstAttribute="top" secondItem="uXP-ph-jnF" secondAttribute="top" id="i9X-iX-ibF"/>
                             <constraint firstItem="uXP-ph-jnF" firstAttribute="trailing" secondItem="t1C-i2-mIY" secondAttribute="trailing" id="lqk-pV-fDt"/>
+                            <constraint firstItem="VoG-Zj-Yt2" firstAttribute="centerY" secondItem="uXP-ph-jnF" secondAttribute="centerY" id="wA4-8H-kql"/>
+                            <constraint firstItem="VoG-Zj-Yt2" firstAttribute="centerX" secondItem="uXP-ph-jnF" secondAttribute="centerX" id="yIo-GR-TAD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uXP-ph-jnF"/>
                     </view>
                     <navigationItem key="navigationItem" id="Utn-70-U26"/>
                     <connections>
+                        <outlet property="progressView" destination="VoG-Zj-Yt2" id="sZz-MH-VLv"/>
                         <outlet property="tableView" destination="t1C-i2-mIY" id="EBK-Oj-YLe"/>
                     </connections>
                 </viewController>
