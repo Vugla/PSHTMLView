@@ -222,7 +222,7 @@ struct PSHTMLViewScripts {
     private static let disableCalloutScriptString = "document.documentElement.style.webkitTouchCallout='none';"
     private static let addToOnloadScriptString = "function addLoadEvent(func) { var oldonload = window.onload; if (typeof window.onload != 'function') { window.onload = func; } else { window.onload = function() { if (oldonload) { oldonload(); } func(); } } } addLoadEvent(nameOfSomeFunctionToRunOnPageLoad); addLoadEvent(function() { }); "
     private static let heigthOnLoadScriptString = "window.onload= function () {window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue).postMessage({justLoaded:true,height: document.body.offsetHeight});};"
-    private static let heigthOnResizeScriptString = "document.body.addEventListener( 'resize', incrementCounter); function incrementCounter() {window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue).postMessage({height: document.body.offsetHeight});};"
+    private static let heigthOnResizeScriptString = "function incrementCounter() {window.webkit.messageHandlers.\(PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue).postMessage({height: document.body.offsetHeight});}; document.body.onresize = incrementCounter;"
     
     static let getContentHeightScriptString = "document.body.offsetHeight"
     
