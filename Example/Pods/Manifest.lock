@@ -1,5 +1,5 @@
 PODS:
-  - PSHTMLView (0.1.4)
+  - PSHTMLView (0.1.5)
 
 DEPENDENCIES:
   - PSHTMLView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  PSHTMLView: 1cb12e33b3dad8902936713c5d66317967bb5372
+  PSHTMLView: 2acbebb3b48a9c06ba1106dc0aacc6e792387bc4
 
 PODFILE CHECKSUM: 3749efc15dd78de2e9a6cb6d2717c4f115b483bc
 

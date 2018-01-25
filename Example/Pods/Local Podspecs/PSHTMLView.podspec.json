@@ -1,6 +1,6 @@
 {
   "name": "PSHTMLView",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "summary": "WKWebView wrapper for using in UITableView and UIScrollView",
   "description": "PSHTMLView is a non scrollable WKWebView wrapper, adapt for using in UITableView and UIScrollView.",
   "homepage": "https://github.com/Vugla/PSHTMLView",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/Vugla/PSHTMLView.git",
-    "tag": "0.1.4"
+    "tag": "0.1.5"
   },
   "platforms": {
     "ios": "9.0"
