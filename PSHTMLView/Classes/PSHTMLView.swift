@@ -10,12 +10,9 @@ import UIKit
 import WebKit
 
 public protocol PSHTMLViewDelegate: class {
-    func presentAlert(_ alertController: UIAlertController)
     func heightChanged(height: CGFloat)
-    func shouldNavigate(for navigationAction: WKNavigationAction) -> Bool
     func handleScriptMessage(_ message: WKScriptMessage)
     func loadingProgress(progress: Float)
-    func didFinishLoad()
 }
 
 public class PSHTMLView: UIView {
@@ -23,12 +20,13 @@ public class PSHTMLView: UIView {
     let webViewKeyPathsToObserve = ["estimatedProgress"]
     var webViewHeightConstraint: NSLayoutConstraint!
     
-    public var baseUrl:URL? = nil {
+    public var baseUrl: URL? = nil {
         didSet {
             webView.loadHTMLString(html ?? "", baseURL: baseUrl)
         }
     }
-    public var delegate: PSHTMLViewDelegate?
+    public weak var delegate: PSHTMLViewDelegate?
+  
     public var webView: WKWebView! {
         didSet {
             addSubview(webView)
@@ -42,11 +40,8 @@ public class PSHTMLView: UIView {
             webView.scrollView.isScrollEnabled = false
             webView.allowsBackForwardNavigationGestures = false
             webView.contentMode = .scaleToFill
-            webView.navigationDelegate = self
-            webView.uiDelegate = self
             webView.scrollView.delaysContentTouches = false
             webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
-            webView.scrollView.delegate = self
         }
     }
     public var html: String? {
@@ -119,20 +114,6 @@ public class PSHTMLView: UIView {
     
 }
 
-extension PSHTMLView: WKNavigationDelegate {
-    
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        delegate?.didFinishLoad()
-    }
-    
-    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let delegate = delegate {
-            return decisionHandler(delegate.shouldNavigate(for: navigationAction) ? .allow : .cancel)
-        }
-        return decisionHandler(.allow)
-    }
-}
-
 extension PSHTMLView: WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == PSHTMLViewScriptMessage.HandlerName.onContentHeightChange.rawValue {
@@ -146,73 +127,6 @@ extension PSHTMLView: WKScriptMessageHandler {
     }
     
     
-}
-
-extension PSHTMLView: WKUIDelegate {
-    /// Handle javascript:alert(...)
-    public func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-        
-        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
-            completionHandler()
-        }
-        
-        alertController.addAction(okAction)
-        
-        delegate?.presentAlert(alertController)
-    }
-    
-    /// Handle javascript:confirm(...)
-    public func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
-        
-        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
-            completionHandler(true)
-        }
-        
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
-            completionHandler(false)
-        }
-        
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        
-        delegate?.presentAlert(alertController)
-    }
-    
-    /// Handle javascript:prompt(...)
-    public func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
-        
-        let alertController = UIAlertController(title: nil, message: prompt, preferredStyle: .alert)
-        
-        alertController.addTextField { (textField) in
-            textField.text = defaultText
-        }
-        
-        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { action in
-            let textField = alertController.textFields![0] as UITextField
-            completionHandler(textField.text)
-        }
-        
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
-            completionHandler(nil)
-        }
-        
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        
-        delegate?.presentAlert(alertController)
-    }
-    
-    
-}
-
-extension PSHTMLView: UIScrollViewDelegate {
-    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return nil
-    }
 }
 
 struct PSHTMLViewScripts {
