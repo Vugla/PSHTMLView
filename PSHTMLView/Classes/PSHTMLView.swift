@@ -73,12 +73,14 @@ public class PSHTMLView: UIView {
         for keyPath in webViewKeyPathsToObserve {
             webView.addObserver(self, forKeyPath: keyPath, options: .new, context: nil)
         }
+        webView.scrollView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
     
     deinit {
         for keyPath in webViewKeyPathsToObserve {
             webView.removeObserver(self, forKeyPath: keyPath)
         }
+        webView.scrollView.removeObserver(self, forKeyPath: "contentSize")
     }
     
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -88,7 +90,12 @@ public class PSHTMLView: UIView {
             
         case "estimatedProgress":
             delegate?.loadingProgress(progress: Float(webView.estimatedProgress))
-            
+        case "contentSize":
+          let height =  self.webView.scrollView.contentSize.height
+          if height != webViewHeightConstraint.constant {
+            webViewHeightConstraint.constant = height
+            delegate?.heightChanged(height: height)
+          }
         default:
             break
         }
