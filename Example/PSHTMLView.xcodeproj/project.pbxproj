@@ -371,7 +371,6 @@
 			baseConfigurationReference = 86E74CED34EC913D52EC86BC /* Pods-PSHTMLView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PSHTMLView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -387,7 +386,6 @@
 			baseConfigurationReference = F22299E5DA2D277A2633DFC4 /* Pods-PSHTMLView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PSHTMLView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;

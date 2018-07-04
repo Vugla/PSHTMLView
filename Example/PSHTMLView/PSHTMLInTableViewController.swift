@@ -24,9 +24,6 @@ class PSHTMLInTableViewController: UIViewController {
     lazy private var htmlCell: PSHTMLCell = { [weak self] in
         var cell = self?.tableView.dequeueReusableCell(withIdentifier: "HTMLCell") as! PSHTMLCell
         cell.htmlView.delegate = self
-        cell.htmlView.webView.navigationDelegate = self
-        cell.htmlView.webView.uiDelegate = self
-        cell.htmlView.webView.scrollView.delegate = self
         return cell
         }()
     
@@ -99,19 +96,44 @@ extension PSHTMLInTableViewController : UITableViewDataSource, UITableViewDelega
     
 }
 
-extension PSHTMLInTableViewController: UIScrollViewDelegate {
-    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return nil
-    }
-}
-
 extension PSHTMLInTableViewController: PSHTMLViewDelegate {
+    func shouldNavigate(for navigationAction: WKNavigationAction) -> Bool {
+        if navigationAction.navigationType == .linkActivated, let url = navigationAction.request.url {
+            //example of intercepting link and launching ios mail app (should work on real device)
+            if url.absoluteString.hasPrefix("mailto:") {
+                if MFMailComposeViewController.canSendMail() {
+                    //todo send mail
+                    let composeVC = MFMailComposeViewController()
+                    composeVC.mailComposeDelegate = self
+                    if let recipient = url.absoluteString.components(separatedBy: ":").last {
+                        composeVC.setToRecipients([recipient])
+                    }
+                    composeVC.setSubject("Hello!")
+                    composeVC.setMessageBody("Hello, this webview was useful!", isHTML: false)
+                    self.present(composeVC, animated: true, completion: nil)
+                } else {
+                    //example of calling javascript from swift (note that alert shown is native one tnx to WKUIDelegate, will show in simulator)
+                    htmlCell.htmlView.webView.evaluateJavaScript("alert(\"Mail services are not available\");")
+                }
+                return false
+            }
+            //intentinally openining all other links in Safari
+            let svc = SFSafariViewController(url: url)
+            present(svc, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
+    func presentAlert(_ alertController: UIAlertController) {
+        present(alertController, animated: true)
+    }
     
     func heightChanged(height: CGFloat) {
         print(height)
         tableView.reloadData()
     }
-  
+    
     func handleScriptMessage(_ message: WKScriptMessage) {
         //opening image link in safari when clicked
         if message.name == PSHTMLViewScriptMessage.HandlerName.onImageClicked.rawValue {
@@ -126,109 +148,11 @@ extension PSHTMLInTableViewController: PSHTMLViewDelegate {
         progressView.isHidden = progress == 1
         progressView.setProgress(progress, animated: true)
     }
-  
-}
-
-extension PSHTMLInTableViewController: WKNavigationDelegate {
-  
-  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    progressView.setProgress(0, animated: false)
-  }
-  
-  func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-    print("Loading for \(navigation.debugDescription) fail with error : \(error)")
-  }
-  
-  func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-    if navigationAction.navigationType == .linkActivated, let url = navigationAction.request.url {
-      //example of intercepting link and launching ios mail app (should work on real device)
-      if url.absoluteString.hasPrefix("mailto:") {
-        if MFMailComposeViewController.canSendMail() {
-          //todo send mail
-          let composeVC = MFMailComposeViewController()
-          composeVC.mailComposeDelegate = self
-          if let recipient = url.absoluteString.components(separatedBy: ":").last {
-            composeVC.setToRecipients([recipient])
-          }
-          composeVC.setSubject("Hello!")
-          composeVC.setMessageBody("Hello, this webview was useful!", isHTML: false)
-          self.present(composeVC, animated: true, completion: nil)
-        } else {
-          //example of calling javascript from swift (note that alert shown is native one tnx to WKUIDelegate, will show in simulator)
-          htmlCell.htmlView.webView.evaluateJavaScript("alert(\"Mail services are not available\");")
-        }
-        return decisionHandler(.cancel)
-      } else {
-        //intentinally openining all other links in Safari
-        let svc = SFSafariViewController(url: url)
-        present(svc, animated: true, completion: nil)
-        return decisionHandler(.cancel)
-      }
-
-    }
-    return decisionHandler(.allow)
-  }
-}
-
-extension PSHTMLInTableViewController: WKUIDelegate {
-  /// Handle javascript:alert(...)
-  public func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
     
-    let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-    
-    let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
-      completionHandler()
+    func didFinishLoad() {
+        progressView.setProgress(0, animated: false)
     }
     
-    alertController.addAction(okAction)
-    
-    present(alertController, animated: true)
-  }
-  
-  /// Handle javascript:confirm(...)
-  public func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
-    
-    let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-    
-    let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
-      completionHandler(true)
-    }
-    
-    let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
-      completionHandler(false)
-    }
-    
-    alertController.addAction(okAction)
-    alertController.addAction(cancelAction)
-    
-    present(alertController, animated: true)
-  }
-  
-  /// Handle javascript:prompt(...)
-  public func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
-    
-    let alertController = UIAlertController(title: nil, message: prompt, preferredStyle: .alert)
-    
-    alertController.addTextField { (textField) in
-      textField.text = defaultText
-    }
-    
-    let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { action in
-      let textField = alertController.textFields![0] as UITextField
-      completionHandler(textField.text)
-    }
-    
-    let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
-      completionHandler(nil)
-    }
-    
-    alertController.addAction(okAction)
-    alertController.addAction(cancelAction)
-    
-    present(alertController, animated: true)
-  }
-  
-  
 }
 
 extension PSHTMLInTableViewController: MFMailComposeViewControllerDelegate {
