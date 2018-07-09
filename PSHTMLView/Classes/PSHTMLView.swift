@@ -28,7 +28,7 @@ public class PSHTMLView: UIView {
             webView.loadHTMLString(html ?? "", baseURL: baseUrl)
         }
     }
-    public var delegate: PSHTMLViewDelegate?
+    public weak var delegate: PSHTMLViewDelegate?
     public var webView: WKWebView! {
         didSet {
             addSubview(webView)
@@ -212,6 +212,9 @@ extension PSHTMLView: WKUIDelegate {
 extension PSHTMLView: UIScrollViewDelegate {
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return nil
+    }
+    public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        scrollView.pinchGestureRecognizer?.isEnabled = false
     }
 }
 
