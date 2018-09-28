@@ -34,7 +34,7 @@ class PSHTMLInTableViewController: UIViewController {
     }
     
     func setupTable() {
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 300
         tableView.tableFooterView = UIView()
     }

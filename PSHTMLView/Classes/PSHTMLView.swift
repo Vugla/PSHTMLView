@@ -45,7 +45,7 @@ public class PSHTMLView: UIView {
             webView.navigationDelegate = self
             webView.uiDelegate = self
             webView.scrollView.delaysContentTouches = false
-            webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
+            webView.scrollView.decelerationRate = UIScrollView.DecelerationRate.normal
             webView.scrollView.delegate = self
         }
     }
